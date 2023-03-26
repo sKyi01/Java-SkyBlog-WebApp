@@ -7,7 +7,7 @@ public class ConnectionProvider {
 		try {
 		if (con == null) {	
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","system","akash");
+			con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","system","akash");
 		}
 			
 		}catch(Exception e) {

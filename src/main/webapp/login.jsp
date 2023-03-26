@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@page import="com.tech.blog.entities.Message" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,21 +44,40 @@ clip-path: polygon(30% 0%, 70% 0%, 100% 0, 100% 93%, 65% 87%, 31% 96%, 0 88%, 0 
 					<div class="card-header bg-primary text-white text-center">
 						<span class="fa fa-user-plus fa-3x "></span> </br>Login
 					</div>
+					<%
+					Message msg=(Message)session.getAttribute("msg");
+					if(msg!=null){
+						
+					%>
+					<div class="alert <%=msg.getCssClass() %>" role="alert">
+  <%=msg.getContent() %>
+</div>
+					<%
+					}
+					session.removeAttribute("msg");
+					
+					
+					%>
+						
+					
+					%>
+						
 					<div class="card-body">
-						<form>
+					
+					<form action="LoginServlet" method="POST">
 						
 						
 						
 						
 							<div class="form-group">
-								<label for="exampleInputEmail1">Email address</label> <input
+								<label for="exampleInputEmail1">Email address</label> <input name="email" required
 									type="email" class="form-control" id="exampleInputEmail1"
 									aria-describedby="emailHelp" placeholder="Enter email">
 								<small id="emailHelp" class="form-text text-muted">We'll
 									never share your email with anyone else.</small>
 							</div>
 							<div class="form-group">
-								<label for="exampleInputPassword1">Password</label> <input
+								<label for="exampleInputPassword1">Password</label> <input name="password" required
 									type="password" class="form-control" id="exampleInputPassword1"
 									placeholder="Password">
 							</div>
@@ -65,14 +85,11 @@ clip-path: polygon(30% 0%, 70% 0%, 100% 0, 100% 93%, 65% 87%, 31% 96%, 0 88%, 0 
 							
 								
 							
-								
-							<div class="form-check ">
-									<input type="checkbox" class="form-check-input"
-										id="exampleCheck1"> <label class="form-check-label"
-										for="exampleCheck1">Check me out</label>
-								</div>
+							
 							<br/>
+							<div class="container text-center">
 							<button type="submit" class="btn btn-primary">Submit</button>
+							</div>
 						</form>
 
 
