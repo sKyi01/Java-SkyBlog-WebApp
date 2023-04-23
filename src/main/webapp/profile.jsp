@@ -1,6 +1,7 @@
 
     <%@page import="com.tech.blog.entities.User" %>
 <%@page errorPage="error.jsp" %>
+<%@page import="com.tech.blog.entities.Message" %>
   <%
   User user=(User)session.getAttribute("currentuser");
   if(user==null){
@@ -83,7 +84,20 @@
 </nav>
 
 
- 
+ <%
+					Message msg=(Message)session.getAttribute("msg");
+					if(msg!=null){
+						
+					%>
+					<div class="alert <%=msg.getCssClass() %>" role="alert">
+  <%=msg.getContent() %>
+</div>
+					<%
+					}
+					session.removeAttribute("msg");
+					
+					
+					%>
 <!--  End Navbar -->
 
 
@@ -111,7 +125,7 @@
 <div class="container text-center">
 
 <div>
-  <img src="pics/<%=user.getProfile() %>" style="border-radius:150px;max-width:100px;" class="img-fluid" style="border-radius:50px;max-width:100;;">
+  <img src="profilepics/<%=user.getProfile() %>" style="border-radius:150px;max-width:100px;" class="img-fluid" style="border-radius:50px;max-width:100;;">
   </div>
   <br/>
   <div>
